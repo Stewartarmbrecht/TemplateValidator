@@ -1,0 +1,11 @@
+﻿Hello! 
+my name is 
+Juan
+----------
+Hello, 
+my name is 
+Juan
+----------
+Target line 1 did not match template line 1 (Template/Target)
+	Hello, 
+	Hello! 

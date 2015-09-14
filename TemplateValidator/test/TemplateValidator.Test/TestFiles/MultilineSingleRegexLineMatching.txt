@@ -1,0 +1,7 @@
+﻿Hello, 
+my name is not 
+Juan
+----------
+Hello, 
+{{my name is .* }}
+Juan

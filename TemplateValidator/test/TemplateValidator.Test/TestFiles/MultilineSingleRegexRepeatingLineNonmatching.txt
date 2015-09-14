@@ -1,0 +1,15 @@
+﻿Hello, 
+my name 
+is not 
+Juan
+----------
+Hello, 
+{{^[0-9]+$}}/rl
+Juan
+----------
+Target line 2 did not match template line 2 (Template/Target)
+	^[0-9]+$
+	my name 
+Target line 3 did not match template line 2 (Template/Target)
+	^[0-9]+$
+	is not 
