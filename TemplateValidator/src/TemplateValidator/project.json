@@ -3,7 +3,7 @@
   "description": "TemplateValidator",
   "authors": [ "Stewart Armbrecht" ],
   "tags": [ "Template, Assert, Validation, Validator" ],
-  "projectUrl": "",
+  "projectUrl": "https://github.com/Stewartarmbrecht/TemplateValidator",
   "licenseUrl": "",
 
   "dependencies": {
