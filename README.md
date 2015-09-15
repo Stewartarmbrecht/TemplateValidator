@@ -142,7 +142,7 @@ Target line 3 did not match template line 3 (Value/Template)<br />
 ##Standard Example
 You can define a template like this:
 
-```
+```C#
 StringBuilder sb = new StringBuilder();
 sb.AppendLine("Hello, ");
 sb.AppendLine("my first name is ");
@@ -175,7 +175,7 @@ Target line 3 did not match template line 3 (Value/Template)
 In addition to standard string comparison you can
 use regular expressions.  You just need to
 surround the line with double curly braces.
-```
+```C#
 //For example: {{my name is [0-9]* }}
 
 StringBuilder sb = new StringBuilder();
@@ -213,7 +213,7 @@ lines in the target until the following
 template line matches the line after
 the current line in the target.
 
-```
+```C#
 StringBuilder sb = new StringBuilder();
 sb.AppendLine("Hello, ");
 sb.AppendLine("my");
