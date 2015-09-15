@@ -142,58 +142,65 @@ Target line 3 did not match template line 3 (Value/Template)<br />
 ##Standard Example
 You can define a template like this:
 
-    StringBuilder sb = new StringBuilder();
-    sb.AppendLine("Hello, ");
-    sb.AppendLine("my first name is ");
-    sb.AppendLine("not Stewart");
-    var myMultilineValue = sb.ToString();
+```
+StringBuilder sb = new StringBuilder();
+sb.AppendLine("Hello, ");
+sb.AppendLine("my first name is ");
+sb.AppendLine("not Stewart");
+var myMultilineValue = sb.ToString();
 
-    StringBuilder sb = new StringBuilder();
-    sb.AppendLine("Hello, ");
-    sb.AppendLine("my name is ");
-    sb.AppendLine("Stewart");
-    var myTemplate = sb.ToString();
+StringBuilder sb = new StringBuilder();
+sb.AppendLine("Hello, ");
+sb.AppendLine("my name is ");
+sb.AppendLine("Stewart");
+var myTemplate = sb.ToString();
 
 
-    myTemplate.ValidateToTemplate(myTemplate);
+myTemplate.ValidateToTemplate(myTemplate);
+```
 
 The last line will throw an exception with the
 following message:
 
-    Target line 2 did not match template line 2 (Value/Template)
-        my first name is
-        my name is
-    Target line 3 did not match template line 3 (Value/Template)
-        not Stewart
-        Stewart
+```
+Target line 2 did not match template line 2 (Value/Template)
+    my first name is
+    my name is
+Target line 3 did not match template line 3 (Value/Template)
+    not Stewart
+    Stewart
+```
 
 ##Regex Support
 In addition to standard string comparison you can
 use regular expressions.  You just need to
 surround the line with double curly braces.
+```
+//For example: {{my name is [0-9]* }}
 
-    //For example: {{my name is [0-9]* }}
+StringBuilder sb = new StringBuilder();
+sb.AppendLine("Hello, ");
+sb.AppendLine("my name is NOT ");
+sb.AppendLine("Stewart");
+var myMultilineValue = sb.ToString();
 
-    StringBuilder sb = new StringBuilder();
-    sb.AppendLine("Hello, ");
-    sb.AppendLine("my name is NOT ");
-    sb.AppendLine("Stewart");
-    var myMultilineValue = sb.ToString();
+StringBuilder sb = new StringBuilder();
+sb.AppendLine("Hello, ");
+sb.AppendLine("{{my name is ^[A-Z]+$ }}");
+sb.AppendLine("Stewart Armbrecht");
+var myTemplate = sb.ToString();
 
-    StringBuilder sb = new StringBuilder();
-    sb.AppendLine("Hello, ");
-    sb.AppendLine("{{my name is ^[A-Z]+$ }}");
-    sb.AppendLine("Stewart Armbrecht");
-    var myTemplate = sb.ToString();
-
-    myTemplate.ValidateToTemplate(myTemplate);
+myTemplate.ValidateToTemplate(myTemplate);
+```
 
 The last line will throw an exception with the
 following message:
 
-    Target line 3 did not match template line 3 (Value/Template)
-        Stewart Armbrecht
-        Stewart
+```
+Target line 3 did not match template line 3 (Value/Template)
+    Stewart Armbrecht
+    Stewart
+```
 
 Line 2 matched via a regular expression.
 
@@ -206,28 +213,30 @@ lines in the target until the following
 template line matches the line after
 the current line in the target.
 
+```
+StringBuilder sb = new StringBuilder();
+sb.AppendLine("Hello, ");
+sb.AppendLine("my");
+sb.AppendLine("name");
+sb.AppendLine("is");
+sb.AppendLine("Stewart");
+sb.AppendLine("Armbrecht");
+var myMultilineValue = sb.ToString();
 
-    StringBuilder sb = new StringBuilder();
-    sb.AppendLine("Hello, ");
-    sb.AppendLine("my");
-    sb.AppendLine("name");
-    sb.AppendLine("is");
-    sb.AppendLine("Stewart");
-    sb.AppendLine("Armbrecht");
-    var myMultilineValue = sb.ToString();
+StringBuilder sb = new StringBuilder();
+sb.AppendLine("Hello, ");
+sb.AppendLine("{{.*}}/rl");
+sb.AppendLine("Stewart");
+sb.AppendLine("Patrick");
+var myTemplate = sb.ToString();
 
-    StringBuilder sb = new StringBuilder();
-    sb.AppendLine("Hello, ");
-    sb.AppendLine("{{.*}}/rl");
-    sb.AppendLine("Stewart");
-    sb.AppendLine("Patrick");
-    var myTemplate = sb.ToString();
-
-    myTemplate.ValidateToTemplate(myTemplate);
-
+myTemplate.ValidateToTemplate(myTemplate);
+```
 The last line will throw an exception with the
 following message:
 
-    Target line 6 did not match template line 4 (Value/Template)
-        Armbrecht
-        Patrick
+```
+Target line 6 did not match template line 4 (Value/Template)
+    Armbrecht
+    Patrick
+```
