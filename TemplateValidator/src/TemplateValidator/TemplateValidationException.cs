@@ -34,9 +34,9 @@ namespace TemplateValidator
                 switch (miss.Outcome)
                 {
                     case LinePairEvaluationOutcome.Miss:
-                        sb.AppendLine("Target line " + miss.TargetLine.LineNumber + " did not match template line " + miss.TemplateLine.LineNumber + " (Template/Target)");
-                        sb.AppendLine("\t" + miss.TemplateLine.LineValue);
+                        sb.AppendLine("Line " + miss.TargetLine.LineNumber + " did not match template line " + miss.TemplateLine.LineNumber + " (Value/Template)");
                         sb.AppendLine("\t" + miss.TargetLine.LineValue);
+                        sb.AppendLine("\t" + miss.TemplateLine.LineValue);
                         break;
                     case LinePairEvaluationOutcome.MissNoTemplate:
                         sb.AppendLine("Extra target line at line number " + miss.TargetLine.LineNumber + " (Target)");

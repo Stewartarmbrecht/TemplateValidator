@@ -1,7 +1,7 @@
-﻿Hello my name is Juan
+﻿Hello my name is Stewart
 ----------
 {{Hello my name is not .*}}
 ----------
-Target line 1 did not match template line 1 (Template/Target)
+Line 1 did not match template line 1 (Value/Template)
+	Hello my name is Stewart
 	Hello my name is not .*
-	Hello my name is Juan

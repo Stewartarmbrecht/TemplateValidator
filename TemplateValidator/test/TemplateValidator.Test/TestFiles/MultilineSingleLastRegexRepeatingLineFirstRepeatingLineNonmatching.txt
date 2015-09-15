@@ -1,11 +1,11 @@
 ﻿Hello, 
 my name ?
 is not 
-at all Juan
+at all Stewart
 ----------
 Hello, 
 {{^[a-zA-Z0-9\s]+$}}/rl
 ----------
-Target line 2 did not match template line 2 (Template/Target)
-	^[a-zA-Z0-9\s]+$
+Line 2 did not match template line 2 (Value/Template)
 	my name ?
+	^[a-zA-Z0-9\s]+$

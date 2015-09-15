@@ -1,7 +1,7 @@
-﻿Hello my name is "Juan"[0-9]+.  What is your name?
+﻿Hello my name is "Stewart"[0-9]+.  What is your name?
 ----------
-Hello my name is "Juan"[0-9]+[A-Z].  What is your name?
+Hello my name is "Stewart"[0-9]+[A-Z].  What is your name?
 ----------
-Target line 1 did not match template line 1 (Template/Target)
-	Hello my name is "Juan"[0-9]+[A-Z].  What is your name?
-	Hello my name is "Juan"[0-9]+.  What is your name?
+Line 1 did not match template line 1 (Value/Template)
+	Hello my name is "Stewart"[0-9]+.  What is your name?
+	Hello my name is "Stewart"[0-9]+[A-Z].  What is your name?

@@ -1,11 +1,11 @@
 ﻿Hello, 
 my name is not 
-Juan
+Stewart
 ----------
 Hello, 
 my name is 
-Juan
+Stewart
 ----------
-Target line 2 did not match template line 2 (Template/Target)
-	my name is 
+Line 2 did not match template line 2 (Value/Template)
 	my name is not 
+	my name is 
