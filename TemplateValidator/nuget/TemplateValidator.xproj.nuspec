@@ -7,6 +7,7 @@
     <owners>Stewart Armbrecht</owners>
     <licenseUrl>https://raw.githubusercontent.com/StewartArmbrecht/TemplateValidator/master/TemplateValidator/src/TemplateValidator/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/Stewartarmbrecht/TemplateValidator</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/StewartArmbrecht/TemplateValidator/master/TemplateValidator/src/TemplateValidator/TVLogo32x32.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Includes a string extension method to validate a multi-line string to a multi-line string template.  Includes functionality for providing an easy to ready print out of where the multi-line string does not match the template.</description>
     <releaseNotes>This is the very first release.  Not used yet.  Just 20 unit tests.  :)</releaseNotes>

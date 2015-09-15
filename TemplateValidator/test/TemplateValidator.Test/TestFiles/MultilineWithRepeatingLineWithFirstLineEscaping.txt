@@ -1,0 +1,12 @@
+﻿Hello, 
+my 
+name 
+is 
+Stewart
+----------
+Hello, 
+{{^[a-zA-Z0-9\s]+$}}/rl
+my
+name 
+is 
+Stewart

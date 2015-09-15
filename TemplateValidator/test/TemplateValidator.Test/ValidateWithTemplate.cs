@@ -153,6 +153,11 @@ namespace xBDD.Test.Features.Helpers
         {
             RunScenario("MultilineSingleLastRegexRepeatingLineFirstRepeatingLineNonmatching");
         }
+        [Fact]
+        public void MultilineWithRepeatingLineWithFirstLineEscaping()
+        {
+            RunScenario("MultilineWithRepeatingLineWithFirstLineEscaping");
+        }
 
     }
 }
