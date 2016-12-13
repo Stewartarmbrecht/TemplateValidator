@@ -1,7 +1,0 @@
-﻿Hello my name is not Stewart
-----------
-Hello my name is Stewart
-----------
-Line 1 did not match template line 1 (Value/Template)
-	Hello my name is not Stewart
-	Hello my name is Stewart

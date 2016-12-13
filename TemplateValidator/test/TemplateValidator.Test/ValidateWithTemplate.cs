@@ -1,28 +1,28 @@
-﻿using Microsoft.Framework.DependencyInjection;
-using Xunit;
-using System.IO;
+﻿using System.IO;
 using System.Text.RegularExpressions;
 using TemplateValidator;
 using System;
-using Microsoft.Dnx.Runtime.Infrastructure;
-using Microsoft.Dnx.Runtime;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace xBDD.Test.Features.Helpers
 {
+    [TestClass]
     public class ValidateWithTemplate
     {
         private readonly string basePath;
 
         public ValidateWithTemplate()
         {
-            var provider = CallContextServiceLocator.Locator.ServiceProvider;
-            var appEnv = provider.GetRequiredService<IApplicationEnvironment>();
+            //var provider = CallContextServiceLocator.Locator.ServiceProvider;
+            //var appEnv = provider.GetRequiredService<IApplicationEnvironment>();
 
-            basePath = appEnv.ApplicationBasePath + "\\TestFiles\\";
+            //basePath = appEnv.ApplicationBasePath + "\\TestFiles\\";
+            basePath = ".\\TestFiles\\";
         }
-        void RunScenario(string scenarioName)
+        void RunScenario(string text)
         {
-            var text = File.ReadAllText(basePath + scenarioName + ".txt");
+            //var text = File.ReadAllText(basePath + scenarioName + ".txt");
+            text = text.Substring(2);
             string[] artifacts = Regex.Split(text, "\r\n----------\r\n");
             string target = artifacts[0];
             string template = artifacts[1];
@@ -44,119 +44,330 @@ namespace xBDD.Test.Features.Helpers
             {
                 if (tve == null)
                     throw new Exception("An exception was not thrown when one was expected.");
-                Assert.Equal(exceptionMessage, tve.Message);
+                Assert.AreEqual(exceptionMessage, tve.Message);
+            }
+            else
+            {
+                if(tve != null)
+                    throw new Exception($"An exception was thrown when one was not expected.  Message: {tve.Message}");
             }
         }
-        [Fact]
+        [TestMethod]
         public void SingleLineMatching()
         {
-            RunScenario("SingleLineMatching");
+            string test = @"
+Hello my name is Stewart
+----------
+Hello my name is Stewart";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void SingleLineRegexMatching()
         {
-            RunScenario("SingleLineRegexMatching");
+            string test = @"
+Hello my name is Stewart
+----------
+{{Hello my name is .*}}";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void SingleLineNonmatching()
         {
-            RunScenario("SingleLineNonmatching");
+            string test = @"
+Hello my name is not Stewart
+----------
+Hello my name is Stewart
+----------
+Line 1 did not match template line 1 (Value/Template)
+	Hello my name is not Stewart
+	Hello my name is Stewart
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void SingleLineRegexNonmatching()
         {
-            RunScenario("SingleLineRegexNonmatching");
+            string test = @"
+Hello my name is Stewart
+----------
+{{Hello my name is not .*}}
+----------
+Line 1 did not match template line 1 (Value/Template)
+	Hello my name is Stewart
+	Hello my name is not .*
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void SingleLineWithRegexCharactersMatching()
         {
-            RunScenario("SingleLineWithRegexCharactersMatching");
+            string test = @"
+Hello my name is ""Stewart""[0-9]+.  What is your name?
+----------
+Hello my name is ""Stewart""[0-9]+.  What is your name?";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void SingleLineWithRegexCharactersNonmatching()
         {
-            RunScenario("SingleLineWithRegexCharactersNonmatching");
+            string test = @"
+Hello my name is ""Stewart""[0-9]+.  What is your name?
+----------
+Hello my name is ""Stewart""[0-9]+[A-Z].  What is your name?
+----------
+Line 1 did not match template line 1 (Value/Template)
+	Hello my name is ""Stewart""[0-9]+.  What is your name?
+	Hello my name is ""Stewart""[0-9]+[A-Z].  What is your name?
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineMatching()
         {
-            RunScenario("MultilineMatching");
+            string test = @"
+Hello, 
+my name is 
+Stewart
+----------
+Hello, 
+my name is 
+Stewart";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void MultilineWithEmptyLineMatching()
         {
-            RunScenario("MultilineWithEmptyLineMatching");
+            string test = @"
+Hello, 
+my name is 
+
+Stewart
+----------
+Hello, 
+my name is 
+
+Stewart";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void MultilineSingleLastLineNonmatching()
         {
-            RunScenario("MultilineSingleLastLineNonmatching");
+            string test = @"
+Hello, 
+my name is 
+not Stewart
+----------
+Hello, 
+my name is 
+Stewart
+----------
+Line 3 did not match template line 3 (Value/Template)
+	not Stewart
+	Stewart
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleFirstLineNonmatching()
         {
-            RunScenario("MultilineSingleFirstLineNonmatching");
+            string test = @"
+Hello! 
+my name is 
+Stewart
+----------
+Hello, 
+my name is 
+Stewart
+----------
+Line 1 did not match template line 1 (Value/Template)
+	Hello! 
+	Hello, 
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleMiddleLineNonmatching()
         {
-            RunScenario("MultilineSingleMiddleLineNonmatching");
+            string test = @"
+Hello, 
+my name is not 
+Stewart
+----------
+Hello, 
+my name is 
+Stewart
+----------
+Line 2 did not match template line 2 (Value/Template)
+	my name is not 
+	my name is 
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineMultipleLineNonmatching()
         {
-            RunScenario("MultilineMultipleLineNonmatching");
+            string test = @"
+Hello! 
+my name is not 
+Stewart
+----------
+Hello, 
+my name is 
+Stewart
+----------
+Line 1 did not match template line 1 (Value/Template)
+	Hello! 
+	Hello, 
+Line 2 did not match template line 2 (Value/Template)
+	my name is not 
+	my name is 
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleRegexLineMatching()
         {
-            RunScenario("MultilineSingleRegexLineMatching");
+            string test = @"
+Hello, 
+my name is not 
+Stewart
+----------
+Hello, 
+{{my name is .* }}
+Stewart";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleRegexLineNonmatching()
         {
-            RunScenario("MultilineSingleRegexLineNonmatching");
+            string test = @"
+Hello, 
+my name is not 
+Stewart
+----------
+Hello, 
+{{my name is [0-9]* }}
+Stewart
+----------
+Line 2 did not match template line 2 (Value/Template)
+	my name is not 
+	my name is [0-9]* 
+";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleRegexRepeatingLineMatching()
         {
-            RunScenario("MultilineSingleRegexRepeatingLineMatching");
+            string test = @"
+Hello, 
+my name 
+is not 
+Stewart
+----------
+Hello, 
+{{.*}}/rl
+Stewart";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleLastRegexRepeatingLineMatching()
         {
-            RunScenario("MultilineSingleLastRegexRepeatingLineMatching");
+            string test = @"
+Hello, 
+my name 
+is not 
+at all Stewart
+----------
+Hello, 
+my name 
+{{^[a-zA-Z0-9\s]+$}}/rl";
+            RunScenario(test);
         }
 
-        [Fact]
+        [TestMethod]
         public void MultilineSingleRegexRepeatingLineNonmatching()
         {
-            RunScenario("MultilineSingleRegexRepeatingLineNonmatching");
+            string test = @"
+Hello, 
+my name 
+is not 
+Stewart
+----------
+Hello, 
+{{^[0-9]+$}}/rl
+Stewart
+----------
+Line 2 did not match template line 2 (Value/Template)
+	my name 
+	^[0-9]+$
+Line 3 did not match template line 2 (Value/Template)
+	is not 
+	^[0-9]+$
+";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void MultilineSingleRegexRepeatingLineRegularLastLineNonmatching()
         {
-            RunScenario("MultilineSingleRegexRepeatingLineRegularLastLineNonmatching");
+            string test = @"
+Hello, 
+my name 
+is not 
+at all Stewart
+----------
+Hello, 
+{{^[a-zA-Z0-9\s]+$}}/rl
+Stewart
+----------
+Extra template line at line number 3 (Template)
+	Stewart
+";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void MultilineSingleLastRegexRepeatingLineFirstRepeatingLineNonmatching()
         {
-            RunScenario("MultilineSingleLastRegexRepeatingLineFirstRepeatingLineNonmatching");
+            string test = @"
+Hello, 
+my name ?
+is not 
+at all Stewart
+----------
+Hello, 
+{{^[a-zA-Z0-9\s]+$}}/rl
+----------
+Line 2 did not match template line 2 (Value/Template)
+	my name ?
+	^[a-zA-Z0-9\s]+$
+";
+            RunScenario(test);
         }
-        [Fact]
+        [TestMethod]
         public void MultilineWithRepeatingLineWithFirstLineEscaping()
         {
-            RunScenario("MultilineWithRepeatingLineWithFirstLineEscaping");
+            string test = @"
+Hello 
+my 
+name 
+is 
+Stewart
+----------
+{{^[a-zA-Z0-9\s]+$}}/rl
+my 
+name 
+is 
+Stewart";
+            RunScenario(test);
         }
 
     }

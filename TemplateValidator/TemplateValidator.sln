@@ -1,21 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26009.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ED5BED8E-D8A5-477B-9CB2-A4D4BAD52E7A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{243A284D-C4FB-4A68-9194-E9BB0807D839}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3ED4AB56-1C97-4B12-A152-66971CE0A9E1}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-		..\README.md = ..\README.md
-	EndProjectSection
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{E0DFB91F-4AD1-40F6-99FD-53DE3CB705FC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TemplateValidator", "src\TemplateValidator\TemplateValidator.xproj", "{6EE1A8D6-C3A9-4024-9CFC-AB01C62E84AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateValidator", "src\TemplateValidator\TemplateValidator.csproj", "{2AD2985B-BC33-48D4-9FD3-6729A484613B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{5062A425-9816-4F92-95A1-985D1F11F01C}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TemplateValidator.Test", "test\TemplateValidator.Test\TemplateValidator.Test.xproj", "{9657701B-1FD9-4636-981E-D2098BA49DB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemplateValidator.Test", "test\TemplateValidator.Test\TemplateValidator.Test.csproj", "{1A95F757-E1C3-45A2-8CA4-749508146C92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,20 +17,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6EE1A8D6-C3A9-4024-9CFC-AB01C62E84AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EE1A8D6-C3A9-4024-9CFC-AB01C62E84AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EE1A8D6-C3A9-4024-9CFC-AB01C62E84AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EE1A8D6-C3A9-4024-9CFC-AB01C62E84AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9657701B-1FD9-4636-981E-D2098BA49DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9657701B-1FD9-4636-981E-D2098BA49DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9657701B-1FD9-4636-981E-D2098BA49DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9657701B-1FD9-4636-981E-D2098BA49DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AD2985B-BC33-48D4-9FD3-6729A484613B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AD2985B-BC33-48D4-9FD3-6729A484613B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AD2985B-BC33-48D4-9FD3-6729A484613B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AD2985B-BC33-48D4-9FD3-6729A484613B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A95F757-E1C3-45A2-8CA4-749508146C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A95F757-E1C3-45A2-8CA4-749508146C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A95F757-E1C3-45A2-8CA4-749508146C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A95F757-E1C3-45A2-8CA4-749508146C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6EE1A8D6-C3A9-4024-9CFC-AB01C62E84AB} = {ED5BED8E-D8A5-477B-9CB2-A4D4BAD52E7A}
-		{9657701B-1FD9-4636-981E-D2098BA49DB9} = {5062A425-9816-4F92-95A1-985D1F11F01C}
+		{2AD2985B-BC33-48D4-9FD3-6729A484613B} = {243A284D-C4FB-4A68-9194-E9BB0807D839}
+		{1A95F757-E1C3-45A2-8CA4-749508146C92} = {E0DFB91F-4AD1-40F6-99FD-53DE3CB705FC}
 	EndGlobalSection
 EndGlobal

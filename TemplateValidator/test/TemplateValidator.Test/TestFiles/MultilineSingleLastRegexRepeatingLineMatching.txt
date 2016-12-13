@@ -1,8 +1,0 @@
-﻿Hello, 
-my name 
-is not 
-at all Stewart
-----------
-Hello, 
-my name 
-{{^[a-zA-Z0-9\s]+$}}/rl
