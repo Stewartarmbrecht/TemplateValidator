@@ -8,7 +8,7 @@ This method will evaluate the multi-line (or single line)
 string against a multi-line (or single line) template 
 that you can define.
 
-##Examples Overview
+## Examples Overview
 <table>
     <tr>
         <td colspan="2">
@@ -139,7 +139,7 @@ Target line 3 did not match template line 3 (Value/Template)<br />
     </tr>
 </table>
 
-##Standard Example
+## Standard Example
 You can define a template like this:
 
 ```C#
@@ -171,7 +171,7 @@ Target line 3 did not match template line 3 (Value/Template)
     Stewart
 ```
 
-##Regex Support
+## Regex Support
 In addition to standard string comparison you can
 use regular expressions.  You just need to
 surround the line with double curly braces.
@@ -204,7 +204,7 @@ Target line 3 did not match template line 3 (Value/Template)
 
 Line 2 matched via a regular expression.
 
-##Repeating Temlpate Line
+## Repeating Temlpate Line
 In addition to using regular expressions
 you can also specify that a line in 
 the template
