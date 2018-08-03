@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace TemplateValidator
 {
+    /// <summary>
+    /// Exception thrown when a template validation fails.
+    /// </summary>
     public class TemplateValidationException : Exception
     {
         internal TemplateValidationException(TemplateEvaluationResult result)
@@ -13,9 +16,18 @@ namespace TemplateValidator
             StringBuilder sb = new StringBuilder();
             Misses = result.GetMisses();
         }
+        /// <summary>
+        /// List of line evaluation pairs that did not match.
+        /// </summary>
+        /// <value>List of <see cref="TemplateValidator.LinePairEvaluationResult"/></value>
         public List<LinePairEvaluationResult> Misses { get; private set; }
 
         string message;
+        
+        /// <summary>
+        /// Message for the exception that highlights the miss matches.
+        /// </summary>
+        /// <value></value>
         public override string Message
         {
             get

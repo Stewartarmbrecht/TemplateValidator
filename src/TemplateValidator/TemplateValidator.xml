@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TemplateValidator</name>
+    </assembly>
+    <members>
+        <member name="T:TemplateValidator.Extensions">
+            <summary>
+            Contains the extension method for comparing templates.
+            </summary>
+        </member>
+        <member name="M:TemplateValidator.Extensions.ValidateToTemplate(System.String,System.String)">
+            <summary>
+            Evaluates the target string against a template.<br/>
+            For a detailed overview of the template validator with examples on how to use it see 
+            <a href="https://github.com/Stewartarmbrecht/TemplateValidator">this github site: https://github.com/Stewartarmbrecht/TemplateValidator</a>.
+            </summary>
+            <param name="target">The string or multiline string to validate.</param>
+            <param name="template">The template to use to validate the string.</param>
+            <example>
+            <br/>Example: Simple validation using an inline regular expression
+            <code>
+                var target = "My name is Stewart";
+                var template = "My name is {{.*}}";
+                target.ValidateToTemplate(template);
+            </code>
+            <br/>Regular Expressions: Use double braces to insert regular expressions in a single line. eg. <br/>
+            <code>
+            My string {{.*}}
+            </code>
+            <br/>
+            Multiline Regular Expressions: Use double braces followed by <br/>
+            <code>
+            /rl
+            </code>
+            <br/>
+            to repeat the comparison on a variable number of lines.
+            <br/>
+            <code>
+            {{.*}}/rl
+            </code>
+            </example>
+            <exception cref="T:TemplateValidator.TemplateValidationException">
+            Thrown when the target does not validate against the provided template.
+            </exception>
+        </member>
+        <member name="T:TemplateValidator.Line">
+            <summary>
+            Represents a line comparison result.
+            </summary>
+        </member>
+        <member name="P:TemplateValidator.Line.LineNumber">
+            <summary>
+            The ordinal position of the line.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:TemplateValidator.Line.LineValue">
+            <summary>
+            The text for the line.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:TemplateValidator.Line.NextLineValue">
+            <summary>
+            The value of the next line in the source.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:TemplateValidator.LinePairEvaluationOutcome">
+            <summary>
+            The potential outcomes for a paired or unpaired line in a target or template.
+            </summary>
+        </member>
+        <member name="F:TemplateValidator.LinePairEvaluationOutcome.Match">
+            <summary>The lines matched.</summary>
+        </member>
+        <member name="F:TemplateValidator.LinePairEvaluationOutcome.Miss">
+            <summary>The lines did not matched.</summary>
+        </member>
+        <member name="F:TemplateValidator.LinePairEvaluationOutcome.MissNoTemplate">
+            <summary>The target line did not pair to a line in the template.</summary>
+        </member>
+        <member name="F:TemplateValidator.LinePairEvaluationOutcome.MissNoTarget">
+            <summary>The template line did not pair to a line in the target.</summary>
+        </member>
+        <member name="T:TemplateValidator.LinePairEvaluationResult">
+            <summary>
+            The result of a comparison of two lines in the target and template at the same position.
+            </summary>
+        </member>
+        <member name="P:TemplateValidator.LinePairEvaluationResult.Outcome">
+            <summary>
+            The evaluation outcome.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:TemplateValidator.LinePairEvaluationResult.TargetLine">
+            <summary>
+            The target line.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:TemplateValidator.LinePairEvaluationResult.TemplateLine">
+            <summary>
+            The template line the target line was paired with.
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:TemplateValidator.TemplateValidationException">
+            <summary>
+            Exception thrown when a template validation fails.
+            </summary>
+        </member>
+        <member name="P:TemplateValidator.TemplateValidationException.Misses">
+            <summary>
+            List of line evaluation pairs that did not match.
+            </summary>
+            <value>List of <see cref="T:TemplateValidator.LinePairEvaluationResult"/></value>
+        </member>
+        <member name="P:TemplateValidator.TemplateValidationException.Message">
+            <summary>
+            Message for the exception that highlights the miss matches.
+            </summary>
+            <value></value>
+        </member>
+    </members>
+</doc>

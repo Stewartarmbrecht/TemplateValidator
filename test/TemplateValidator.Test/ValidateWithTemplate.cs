@@ -9,19 +9,8 @@ namespace xBDD.Test.Features.Helpers
     [TestClass]
     public class ValidateWithTemplate
     {
-        private readonly string basePath;
-
-        public ValidateWithTemplate()
-        {
-            //var provider = CallContextServiceLocator.Locator.ServiceProvider;
-            //var appEnv = provider.GetRequiredService<IApplicationEnvironment>();
-
-            //basePath = appEnv.ApplicationBasePath + "\\TestFiles\\";
-            basePath = ".\\TestFiles\\";
-        }
         void RunScenario(string text)
         {
-            //var text = File.ReadAllText(basePath + scenarioName + ".txt");
             text = text.Substring(2);
             string[] artifacts = Regex.Split(text, "\r\n----------\r\n");
             string target = artifacts[0];
@@ -30,7 +19,6 @@ namespace xBDD.Test.Features.Helpers
             TemplateValidationException tve = null;
             if (artifacts.Length > 2)
                 exceptionMessage = artifacts[2];
-            //target.ValidateToTemplate(template);
             try
             {
                 target.ValidateToTemplate(template);

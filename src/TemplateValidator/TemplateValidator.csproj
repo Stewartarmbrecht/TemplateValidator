@@ -1,25 +1,25 @@
-﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup Label="Configuration">
     <RootNamespace>xBDD</RootNamespace>
     <DocumentationFile>TemplateValidator.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>netstandard1.6</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>TemplateValidator</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
+    <Version>1.0.1</Version>
     <Authors>Stewart Armbrecht</Authors>
+    <Company>Bound by Better</Company>
     <Description>Includes a string extension method to validate a multi-line string to a multi-line string template.  Includes functionality for providing an easy to ready print out of where the multi-line string does not match the template.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>Upgraded to .Net Standard.</PackageReleaseNotes>
+    <PackageReleaseNotes>Upgraded to .Net Standard 2.0.</PackageReleaseNotes>
     <Copyright>Copyright 2016 (c) Stewart Armbrecht. All rights reserved.</Copyright>
-    <PackageTags>template, assert, validation, validator, unit test</PackageTags>
+    <PackageTags>template, assert, validation, validator, unit test, MSTest, xUnit</PackageTags>
     <PackageLicenseUrl>https://raw.githubusercontent.com/StewartArmbrecht/TemplateValidator/master/TemplateValidator/src/TemplateValidator/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Stewartarmbrecht/TemplateValidator</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/StewartArmbrecht/TemplateValidator/master/TemplateValidator/src/TemplateValidator/TVLogo.png</PackageIconUrl>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="**\*.cs" />
     <EmbeddedResource Include="**\*.resx" />
   </ItemGroup>
   <ItemGroup>
@@ -28,14 +28,4 @@
   <ItemGroup>
     <None Include="LICENSE.md" />
   </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="NETStandard.Library">
-      <Version>1.6.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.NET.Sdk">
-      <Version>1.0.0-alpha-20161104-2</Version>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
