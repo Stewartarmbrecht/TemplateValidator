@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace TemplateValidator
 {
@@ -17,7 +18,7 @@ namespace TemplateValidator
 
         internal TargetLineIterator(string target)
         {
-            targetLines = Regex.Split(target, "\r\n|\r|\n");
+            targetLines = Regex.Split(target, Environment.NewLine);
         }
 
         internal bool TryGetNext(out Line line)

@@ -11,8 +11,8 @@ namespace xBDD.Test.Features.Helpers
     {
         void RunScenario(string text)
         {
-            text = text.Substring(2);
-            string[] artifacts = Regex.Split(text, "\r\n----------\r\n");
+            text = text.Substring(Environment.NewLine.Length);
+            string[] artifacts = Regex.Split(text, $"{Environment.NewLine}----------{Environment.NewLine}");
             string target = artifacts[0];
             string template = artifacts[1];
             string exceptionMessage = null;

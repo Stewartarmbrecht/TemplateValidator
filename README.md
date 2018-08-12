@@ -174,7 +174,9 @@ Target line 3 did not match template line 3 (Value/Template)
 ## Regex Support
 In addition to standard string comparison you can
 use regular expressions.  You just need to
-surround the line with double curly braces.
+surround the entire line with double curly braces.  
+**Note: You must enclose the entire line, not just the
+regex expression.**
 ```C#
 //For example: {{my name is [0-9]* }}
 
