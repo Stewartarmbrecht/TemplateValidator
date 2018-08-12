@@ -18,15 +18,15 @@
             <param name="target">The string or multiline string to validate.</param>
             <param name="template">The template to use to validate the string.</param>
             <example>
-            <br/>Example: Simple validation using an inline regular expression
+            <br/>Example: Simple validation using a regular expression
             <code>
                 var target = "My name is Stewart";
-                var template = "My name is {{.*}}";
+                var template = "{{My name is .*}}";
                 target.ValidateToTemplate(template);
             </code>
-            <br/>Regular Expressions: Use double braces to insert regular expressions in a single line. eg. <br/>
+            <br/>Regular Expressions: Use double braces around the entire line to treat the line as a regular expressions. eg. <br/>
             <code>
-            My string {{.*}}
+            {{My string .*}}
             </code>
             <br/>
             Multiline Regular Expressions: Use double braces followed by <br/>
